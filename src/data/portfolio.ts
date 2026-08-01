@@ -383,109 +383,62 @@ export const skills: Skill[] = [
 // ─── Certifications Data ──────────────────────────────────────────────────────
 export const certifications: Certification[] = [
   {
-    id: "microsoft-pbi",
-    title: "Microsoft Power BI Data Analyst Associate",
-    issuer: "Microsoft",
-    date: "2025",
-    credentialId: "PL-300",
-    description:
-      "Professional certification covering advanced Power BI, DAX, data modelling, and enterprise BI deployment.",
-    badgeUrl: "/certifications/microsoft.svg",
-  },
-  {
     id: "google-da",
     title: "Google Data Analytics Professional Certificate",
     issuer: "Google / Coursera",
-    date: "2024",
+    date: "2026",
     description:
-      "Comprehensive data analytics program covering R, SQL, data viz, and the full analytics workflow.",
+      "Data Analysis, R, SQL, Tableau, Data Visualization, and Analytics Workflow.",
     badgeUrl: "/certifications/google.svg",
   },
   {
     id: "ibm-ds",
     title: "IBM Data Science Professional Certificate",
     issuer: "IBM / Coursera",
-    date: "2024",
+    date: "2025",
     description:
-      "10-course series covering Python, ML, deep learning, SQL, and applied data science projects.",
+      "Python, Machine Learning, Data Analysis, SQL, Data Visualization, and Applied Data Science.",
     badgeUrl: "/certifications/ibm.svg",
   },
   {
-    id: "azure-ai",
-    title: "Microsoft Azure AI Fundamentals",
-    issuer: "Microsoft",
-    date: "2024",
-    credentialId: "AI-900",
+    id: "deloitte-analytics",
+    title: "Data Analytics Job Simulation (Deloitte Australia)",
+    issuer: "Deloitte / Forage",
+    date: "2026",
     description:
-      "Foundational certification for Azure AI services, cognitive APIs, and responsible AI principles.",
-    badgeUrl: "/certifications/azure.svg",
+      "Data Analytics, Dashboarding with Tableau, Data Cleaning, and Business Insights.",
+    badgeUrl: "/certifications/deloitte.svg",
   },
   {
-    id: "meta-sql",
-    title: "Meta Database Engineer Professional Certificate",
-    issuer: "Meta / Coursera",
-    date: "2025",
-    description:
-      "Advanced SQL, database design, stored procedures, and backend API integration with MySQL.",
-    badgeUrl: "/certifications/meta.svg",
-  },
-  {
-    id: "deeplearning-ai",
-    title: "DeepLearning.AI Machine Learning Specialisation",
-    issuer: "DeepLearning.AI / Coursera",
+    id: "george-telegraph-hardware",
+    title: "Computer Hardware & Advanced Networking",
+    issuer: "George Telegraph",
     date: "2024",
     description:
-      "Andrew Ng's flagship ML specialisation covering supervised, unsupervised, and reinforcement learning.",
-    badgeUrl: "/certifications/deeplearning.svg",
+      "System Administration, Network Architecture, Hardware Troubleshooting, and Infrastructure.",
+    badgeUrl: "/certifications/george-telegraph.svg",
   },
 ];
 
 // ─── Achievements Data ────────────────────────────────────────────────────────
 export const achievements: Achievement[] = [
   {
-    id: "agritech-hackathon",
-    title: "Best Innovation Award — AgriTech Hackathon",
+    id: "nirmal-mela-winner",
+    title: "Tech Fest Nirmal Mela 2025 Winner",
     description:
-      "Won Best Innovation at state-level AgriTech hackathon for KrishiMitra, beating 120+ competing teams with a real-world AI solution for Indian farmers.",
-    date: "2024",
+      "Secured First Place / Winner at the Tech Fest Nirmal Mela competition held at Sister Nivedita University (SBU).",
+    date: "2025",
     icon: "trophy",
     category: "award",
   },
   {
-    id: "sports-analytics",
-    title: "Top 5% — Sports Analytics Challenge",
+    id: "vu-ai-hackathon",
+    title: "AI-Powered Hackathon Participation",
     description:
-      "Ranked top 5% in a national sports analytics competition, developing a match outcome prediction model with 78% accuracy.",
+      "Successfully participated in the AI-Powered Hackathon organised at Vidyasagar University (VU).",
     date: "2026",
     icon: "medal",
     category: "competition",
-  },
-  {
-    id: "women-health-forum",
-    title: "Published — Women's Health Analytics Forum",
-    description:
-      "Methodology for personalised menstrual cycle prediction using ensemble time-series models published and featured in women's health analytics community.",
-    date: "2025",
-    icon: "file-text",
-    category: "publication",
-  },
-  {
-    id: "open-source",
-    title: "Open Source Contributor — 500+ GitHub Commits",
-    description:
-      "Active open-source contributor with 500+ commits, 200+ stars earned, and contributions to data analytics and ML community projects.",
-    date: "2024–2026",
-    icon: "github",
-    category: "contribution",
-  },
-  {
-    id: "dean-list",
-    title: "Academic Excellence — Dean's List",
-    description:
-      "Recognised on Dean's List for academic excellence, maintaining top GPA while completing multiple professional certifications and industry projects.",
-    date: "2024",
-    icon: "star",
-    category: "award",
   },
 ];
 

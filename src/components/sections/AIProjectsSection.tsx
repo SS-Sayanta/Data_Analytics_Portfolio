@@ -36,94 +36,19 @@ export default function AIProjectsSection() {
           </motion.p>
         </motion.div>
 
-        <div className="space-y-12">
-          {aiProjects.map((project, idx) => (
+        {/* AI Projects Container */}
+        <div className="flex flex-col gap-12 lg:gap-16">
+          {aiProjects.map((project) => (
             <motion.div
               key={project.id}
               variants={scaleIn}
               initial="hidden"
               whileInView="visible"
               viewport={viewportConfig}
-              className={`grid lg:grid-cols-2 gap-8 items-start ${
-                idx % 2 === 1 ? "lg:direction-rtl" : ""
-              }`}
+              className="glass rounded-3xl p-6 md:p-8 lg:p-10 border border-white/[0.07] grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-4 lg:mb-8"
             >
-              {/* Left: Visual */}
-              <div
-                className={`order-1 ${idx % 2 === 1 ? "lg:order-2" : ""}`}
-              >
-                <div
-                  className="glass rounded-3xl p-8 border border-white/[0.07] relative overflow-hidden"
-                  style={{
-                    background: `linear-gradient(135deg, 
-                      ${project.id === "period-prediction-ai" ? "rgba(139,92,246,0.08)" : "rgba(16,185,129,0.08)"} 0%, 
-                      rgba(59,130,246,0.05) 100%)`,
-                  }}
-                >
-                  {/* Background decoration */}
-                  <div
-                    className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10 blur-3xl"
-                    style={{
-                      background:
-                        project.id === "period-prediction-ai" ? "#8b5cf6" : "#10b981",
-                    }}
-                  />
-
-                  {/* Tech architecture display */}
-                  <div className="relative z-10">
-                    <div
-                      className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6 ${
-                        project.id === "period-prediction-ai"
-                          ? "bg-violet-500/15 border border-violet-500/25"
-                          : "bg-emerald-500/15 border border-emerald-500/25"
-                      }`}
-                    >
-                      {project.id === "period-prediction-ai" ? (
-                        <Cpu size={28} className="text-violet-400" />
-                      ) : (
-                        <Leaf size={28} className="text-emerald-400" />
-                      )}
-                    </div>
-
-                    <h4 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
-                      Technical Architecture
-                    </h4>
-                    <p className="text-sm text-slate-300 leading-relaxed font-mono bg-black/30 rounded-xl p-4 border border-white/5 mb-6">
-                      {project.architecture}
-                    </p>
-
-                    {/* Tech stack pills */}
-                    <div className="flex flex-wrap gap-2">
-                      {project.techStack.map((tech) => (
-                        <span key={tech} className="tag">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Metrics row */}
-                {project.metrics && (
-                  <div className="grid grid-cols-2 gap-3 mt-3">
-                    {project.metrics.map((m) => (
-                      <div
-                        key={m.label}
-                        className="glass rounded-2xl p-4 border border-white/[0.06] text-center"
-                      >
-                        <div className="text-2xl font-bold gradient-text metric-value">
-                          {m.value}
-                          {m.unit && <span className="text-sm ml-0.5">{m.unit}</span>}
-                        </div>
-                        <div className="text-xs text-slate-500 mt-1">{m.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Right: Content */}
-              <div className={`order-2 ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
+              {/* Left Column: Details, Problem/Solution & Actions */}
+              <div className="flex flex-col pl-6 md:pl-8 pr-4 py-6 md:py-8">
                 <div className="flex items-center gap-3 mb-4">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
@@ -137,29 +62,29 @@ export default function AIProjectsSection() {
                   <span className="text-xs text-slate-500 font-mono">{project.year}</span>
                 </div>
 
-                <h3 className="text-3xl font-bold text-white leading-tight mb-2">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-2">
                   {project.title}
                 </h3>
-                <p className="text-slate-500 mb-4">{project.subtitle}</p>
-                <p className="text-slate-400 leading-relaxed mb-6">{project.description}</p>
+                <p className="text-sm text-slate-500 mb-4">{project.subtitle}</p>
+                <p className="text-sm text-slate-400 leading-relaxed mb-6">{project.description}</p>
 
-                {/* Problem → Solution */}
+                {/* Problem Statement & Solution — Clean subheadings without heavy blue background boxes */}
                 <div className="space-y-4 mb-6">
-                  <div className="glass rounded-xl p-4 border border-white/5">
-                    <h4 className="text-xs font-semibold text-red-400 uppercase tracking-wider mb-2">
+                  <div>
+                    <h4 className="text-rose-400 font-mono text-xs tracking-wider uppercase mb-1 font-semibold">
                       Problem Statement
                     </h4>
-                    <p className="text-xs text-slate-400 leading-relaxed">{project.problem}</p>
+                    <p className="text-xs text-slate-300 leading-relaxed">{project.problem}</p>
                   </div>
-                  <div className="glass rounded-xl p-4 border border-white/5">
-                    <h4 className="text-xs font-semibold text-green-400 uppercase tracking-wider mb-2">
+                  <div>
+                    <h4 className="text-emerald-400 font-mono text-xs tracking-wider uppercase mb-1 font-semibold">
                       Our Solution
                     </h4>
-                    <p className="text-xs text-slate-400 leading-relaxed">{project.solution}</p>
+                    <p className="text-xs text-slate-300 leading-relaxed">{project.solution}</p>
                   </div>
                 </div>
 
-                {/* Key features */}
+                {/* Key Features */}
                 <div className="mb-6">
                   <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">
                     Key Features
@@ -171,17 +96,17 @@ export default function AIProjectsSection() {
                           size={13}
                           className={
                             project.id === "period-prediction-ai"
-                              ? "text-violet-400"
-                              : "text-emerald-400"
+                              ? "text-violet-400 mt-0.5 shrink-0"
+                              : "text-emerald-400 mt-0.5 shrink-0"
                           }
                         />
-                        <span className="text-sm text-slate-400">{f}</span>
+                        <span className="text-xs sm:text-sm text-slate-400">{f}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Impact highlights */}
+                {/* Business Impact */}
                 <div className="mb-8">
                   <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">
                     Business Impact
@@ -189,15 +114,15 @@ export default function AIProjectsSection() {
                   <div className="space-y-2">
                     {project.impact.map((i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <div className="w-1 h-1 rounded-full bg-amber-400 mt-2 shrink-0" />
-                        <span className="text-sm text-slate-400">{i}</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1.5 shrink-0" />
+                        <span className="text-xs sm:text-sm text-slate-400">{i}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* CTAs */}
-                <div className="flex gap-3">
+                {/* Action Buttons */}
+                <div className="flex items-center gap-3 mt-auto pt-2">
                   {project.githubUrl && (
                     <a
                       href={project.githubUrl}
@@ -221,6 +146,78 @@ export default function AIProjectsSection() {
                     </a>
                   )}
                 </div>
+              </div>
+
+              {/* Right Column: Architecture & Stats Grid */}
+              <div className="flex flex-col gap-4">
+                <div
+                  className="glass rounded-2xl p-6 md:p-8 border border-white/[0.07] relative overflow-hidden"
+                  style={{
+                    background: `linear-gradient(135deg, 
+                      ${project.id === "period-prediction-ai" ? "rgba(139,92,246,0.08)" : "rgba(16,185,129,0.08)"} 0%, 
+                      rgba(59,130,246,0.05) 100%)`,
+                  }}
+                >
+                  {/* Background glow */}
+                  <div
+                    className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-10 blur-3xl pointer-events-none"
+                    style={{
+                      background:
+                        project.id === "period-prediction-ai" ? "#8b5cf6" : "#10b981",
+                    }}
+                  />
+
+                  {/* Architecture Content */}
+                  <div className="relative z-10 p-2 md:p-4">
+                    <div
+                      className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${
+                        project.id === "period-prediction-ai"
+                          ? "bg-violet-500/15 border border-violet-500/25"
+                          : "bg-emerald-500/15 border border-emerald-500/25"
+                      }`}
+                    >
+                      {project.id === "period-prediction-ai" ? (
+                        <Cpu size={24} className="text-violet-400" />
+                      ) : (
+                        <Leaf size={24} className="text-emerald-400" />
+                      )}
+                    </div>
+
+                    <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">
+                      Technical Architecture
+                    </h4>
+                    <p className="text-xs md:text-sm text-slate-300 leading-relaxed font-mono mb-4">
+                      {project.architecture}
+                    </p>
+
+                    {/* Tech Stack Pills */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.techStack.map((tech) => (
+                        <span key={tech} className="tag">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Metrics Grid */}
+                {project.metrics && (
+                  <div className="grid grid-cols-2 gap-3">
+                    {project.metrics.map((m) => (
+                      <div
+                        key={m.label}
+                        className="glass rounded-2xl p-4 md:p-5 border border-white/[0.06] text-center"
+                      >
+                        <div className="text-xl sm:text-2xl font-bold gradient-text metric-value">
+                          {m.value}
+                          {m.unit && <span className="text-xs sm:text-sm ml-0.5">{m.unit}</span>}
+                        </div>
+                        <div className="text-[10px] sm:text-xs text-slate-500 mt-1">{m.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

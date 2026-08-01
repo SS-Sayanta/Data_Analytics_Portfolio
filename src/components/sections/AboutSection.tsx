@@ -85,22 +85,7 @@ export default function AboutSection() {
               </p>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-3">
-              {[
-                "Power BI",
-                "Python",
-                "SQL",
-                "DAX",
-                "Power Query",
-                "Pandas",
-                "NumPy",
-                "Excel",
-              ].map((tech) => (
-                <span key={tech} className="tag">
-                  {tech}
-                </span>
-              ))}
-            </motion.div>
+
           </motion.div>
 
           {/* Right — Competency cards (single-column vertical stack) */}

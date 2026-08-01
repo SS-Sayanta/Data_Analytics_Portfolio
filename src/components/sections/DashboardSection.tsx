@@ -11,12 +11,17 @@ const dashboards = [
     subtitle: "Tournament analytics & match predictions",
     icon: Activity,
     color: "#3b82f6",
-    metrics: ["48 Teams", "104 Matches", "200+ KPIs"],
+    metrics: ["8 M+ Viewers", "94.2% Accuracy", "104 Matches"],
     tags: ["Power BI", "DAX", "Python"],
     preview: {
       type: "fifa",
       primaryColor: "#3b82f6",
       secondaryColor: "#8b5cf6",
+      kpis: [
+        { val: "8M+", label: "VIEWERS" },
+        { val: "94.2%", label: "ACCURACY" },
+        { val: "104", label: "MATCHES" },
+      ],
     },
   },
   {
@@ -25,12 +30,17 @@ const dashboards = [
     subtitle: "Revenue intelligence for 500+ cities",
     icon: ShoppingCart,
     color: "#f97316",
-    metrics: ["500+ Cities", "50M+ Orders", "₹12Cr Found"],
+    metrics: ["₹12Cr Found", "50M+ Orders", "500+ Cities"],
     tags: ["Power BI", "PostgreSQL", "RLS"],
     preview: {
       type: "swiggy",
       primaryColor: "#f97316",
       secondaryColor: "#f59e0b",
+      kpis: [
+        { val: "₹12Cr", label: "FOUND" },
+        { val: "50M+", label: "ORDERS" },
+        { val: "500+", label: "CITIES" },
+      ],
     },
   },
   {
@@ -39,12 +49,17 @@ const dashboards = [
     subtitle: "Clinical outcomes & patient flow",
     icon: Activity,
     color: "#10b981",
-    metrics: ["3 Hospitals", "18% Readmission Drop", "91% Bed Use"],
+    metrics: ["18% Readmission Drop", "91% Bed Utilization", "3 Hospitals"],
     tags: ["Power BI", "Azure", "ML"],
     preview: {
       type: "healthcare",
       primaryColor: "#10b981",
       secondaryColor: "#06b6d4",
+      kpis: [
+        { val: "-18%", label: "READMIT DROP" },
+        { val: "91%", label: "BED USE" },
+        { val: "3", label: "HOSPITALS" },
+      ],
     },
   },
   {
@@ -53,12 +68,17 @@ const dashboards = [
     subtitle: "Streaming intelligence at 500M scale",
     icon: Users,
     color: "#8b5cf6",
-    metrics: ["500M+ Users", "14% Churn Drop", "31% CTR Up"],
+    metrics: ["500M+ Users", "14% Churn Reduction", "27min/day"],
     tags: ["Python", "BigQuery", "Kafka"],
     preview: {
       type: "jiohotstar",
       primaryColor: "#8b5cf6",
       secondaryColor: "#ec4899",
+      kpis: [
+        { val: "500M+", label: "USERS" },
+        { val: "-14%", label: "CHURN DROP" },
+        { val: "27m/d", label: "AVG TIME" },
+      ],
     },
   },
 ];
@@ -70,10 +90,12 @@ function DashboardMockup({
   primaryColor,
   secondaryColor,
   type,
+  kpis,
 }: {
   primaryColor: string;
   secondaryColor: string;
   type: string;
+  kpis: { val: string; label: string }[];
 }) {
   const bars = [65, 80, 45, 90, 70, 55, 85, 60, 75, 50];
 
@@ -99,7 +121,7 @@ function DashboardMockup({
       </text>
 
       {/* KPI Cards */}
-      {[0, 1, 2].map((i) => (
+      {kpis.map((kpi, i) => (
         <g key={i}>
           <rect
             x={10 + i * 125}
@@ -127,7 +149,7 @@ function DashboardMockup({
             fontWeight="bold"
             fontFamily="monospace"
           >
-            {i === 0 ? "94.2%" : i === 1 ? "₹12.4Cr" : "2.1K"}
+            {kpi.val}
           </text>
           <text
             x={18 + i * 125}
@@ -136,7 +158,7 @@ function DashboardMockup({
             fontSize="6"
             fontFamily="sans-serif"
           >
-            {i === 0 ? "ACCURACY" : i === 1 ? "REVENUE" : "USERS"}
+            {kpi.label}
           </text>
         </g>
       ))}
@@ -243,7 +265,7 @@ export default function DashboardSection() {
               key={db.id}
               variants={scaleIn}
               whileHover={{ y: -6 }}
-              className="glass rounded-3xl overflow-hidden border border-white/[0.07] transition-all duration-300 hover:border-white/15"
+              className="glass rounded-3xl overflow-hidden border border-white/[0.07] transition-all duration-300 hover:border-white/15 flex flex-col justify-between"
               style={{
                 boxShadow: `0 4px 40px ${db.color}15`,
               }}
@@ -264,28 +286,29 @@ export default function DashboardSection() {
                   primaryColor={db.preview.primaryColor}
                   secondaryColor={db.preview.secondaryColor}
                   type={db.id}
+                  kpis={db.preview.kpis}
                 />
               </div>
 
               {/* Info */}
-              <div className="p-6">
-                <div className="flex items-start gap-4 mb-4">
+              <div className="p-6 md:p-7 pb-8 flex flex-col gap-3">
+                <div className="flex items-start gap-4">
                   <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+                    className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 mt-0.5"
                     style={{ background: `${db.color}20`, border: `1px solid ${db.color}30` }}
                   >
                     <db.icon size={22} style={{ color: db.color }} />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-white text-base leading-tight mb-0.5">
+                  <div className="flex flex-col gap-1">
+                    <h3 className="font-bold text-white text-lg leading-relaxed">
                       {db.title}
                     </h3>
-                    <p className="text-sm text-slate-500">{db.subtitle}</p>
+                    <p className="text-sm text-slate-400 leading-relaxed">{db.subtitle}</p>
                   </div>
                 </div>
 
                 {/* Metrics */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mt-3">
                   {db.metrics.map((m) => (
                     <span
                       key={m}
@@ -302,7 +325,7 @@ export default function DashboardSection() {
                 </div>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2 mt-1">
                   {db.tags.map((t) => (
                     <span key={t} className="tag">
                       {t}

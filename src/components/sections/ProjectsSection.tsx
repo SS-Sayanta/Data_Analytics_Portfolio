@@ -40,12 +40,12 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.article
       variants={scaleIn}
-      className="glass rounded-3xl overflow-hidden glass-hover card-glow border border-white/[0.06]"
+      className="glass rounded-2xl overflow-hidden glass-hover card-glow border border-slate-800 bg-slate-900/50 flex flex-col justify-between h-full"
       aria-label={`Project: ${project.title}`}
     >
       {/* Project header / preview */}
       <div
-        className="relative h-48 flex items-center justify-center overflow-hidden"
+        className="relative h-48 flex items-center justify-center overflow-hidden shrink-0"
         style={{
           background: `linear-gradient(135deg, 
             rgba(59,130,246,0.08) 0%, 
@@ -88,149 +88,157 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <div className="flex items-start justify-between gap-3 mb-3">
+      <div className="p-6 flex flex-col justify-between flex-1 gap-4">
+        <div className="flex flex-col gap-3">
+          {/* Featured badge on top row if present */}
+          {project.featured && (
+            <div>
+              <span className="inline-block px-2.5 py-0.5 text-[10px] font-semibold tracking-wider rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/20 uppercase">
+                Featured
+              </span>
+            </div>
+          )}
+
+          {/* Title & Subtitle */}
           <div>
             <h3 className="text-lg font-bold text-white leading-tight mb-1">{project.title}</h3>
-            <p className="text-sm text-slate-500">{project.subtitle}</p>
+            <p className="text-sm text-slate-500 line-clamp-1">{project.subtitle}</p>
           </div>
-          {project.featured && (
-            <span className="shrink-0 px-2 py-0.5 text-[10px] font-semibold tracking-wider rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/20 uppercase">
-              Featured
-            </span>
-          )}
+
+          {/* Description */}
+          <p className="text-sm text-slate-400 leading-relaxed line-clamp-2">
+            {project.description}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-1.5">
+            {project.tags.slice(0, 4).map((tag) => (
+              <span key={tag} className="tag">
+                {tag}
+              </span>
+            ))}
+            {project.tags.length > 4 && (
+              <span className="tag opacity-50">+{project.tags.length - 4}</span>
+            )}
+          </div>
         </div>
 
-        <p className="text-sm text-slate-400 leading-relaxed mb-4 line-clamp-3">
-          {project.description}
-        </p>
+        <div>
+          {/* Expandable case study details */}
+          <AnimatePresence>
+            {expanded && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden mb-4"
+              >
+                <div className="border-t border-white/5 pt-4 space-y-4">
+                  {/* Problem */}
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1 flex items-center gap-2">
+                      <span className="w-3 h-px bg-red-400/60" />
+                      Business Problem
+                    </h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">{project.problem}</p>
+                  </div>
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-5">
-          {project.tags.slice(0, 4).map((tag) => (
-            <span key={tag} className="tag">
-              {tag}
-            </span>
-          ))}
-          {project.tags.length > 4 && (
-            <span className="tag opacity-50">+{project.tags.length - 4}</span>
-          )}
-        </div>
+                  {/* Solution */}
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1 flex items-center gap-2">
+                      <span className="w-3 h-px bg-green-400/60" />
+                      Solution
+                    </h4>
+                    <p className="text-xs text-slate-400 leading-relaxed">{project.solution}</p>
+                  </div>
 
-        {/* Expandable case study details */}
-        <AnimatePresence>
-          {expanded && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="overflow-hidden"
+                  {/* Features */}
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1 flex items-center gap-2">
+                      <span className="w-3 h-px bg-blue-400/60" />
+                      Key Features
+                    </h4>
+                    <ul className="space-y-1">
+                      {project.features.map((f) => (
+                        <li key={f} className="flex items-start gap-2 text-xs text-slate-400">
+                          <ChevronRight size={12} className="text-blue-400 mt-0.5 shrink-0" />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Impact */}
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1 flex items-center gap-2">
+                      <span className="w-3 h-px bg-amber-400/60" />
+                      Business Impact
+                    </h4>
+                    <ul className="space-y-1">
+                      {project.impact.map((i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs text-slate-400">
+                          <ChevronRight size={12} className="text-amber-400 mt-0.5 shrink-0" />
+                          {i}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Architecture */}
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1 flex items-center gap-2">
+                      <span className="w-3 h-px bg-violet-400/60" />
+                      Architecture
+                    </h4>
+                    <p className="text-xs text-slate-400 leading-relaxed font-mono bg-white/[0.03] rounded-lg p-3 border border-white/5">
+                      {project.architecture}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Action row */}
+          <div className="pt-4 border-t border-slate-800/50 flex items-center justify-between flex-wrap gap-3">
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="text-xs text-blue-400 font-medium flex items-center gap-1 hover:text-blue-300 transition-colors"
             >
-              <div className="border-t border-white/5 pt-5 space-y-5 mb-5">
-                {/* Problem */}
-                <div>
-                  <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-2">
-                    <span className="w-3 h-px bg-red-400/60" />
-                    Business Problem
-                  </h4>
-                  <p className="text-xs text-slate-400 leading-relaxed">{project.problem}</p>
-                </div>
+              {expanded ? "Hide Details" : "View Case Study"}
+              <ChevronRight
+                size={12}
+                className={`transition-transform ${expanded ? "rotate-90" : ""}`}
+              />
+            </button>
 
-                {/* Solution */}
-                <div>
-                  <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-2">
-                    <span className="w-3 h-px bg-green-400/60" />
-                    Solution
-                  </h4>
-                  <p className="text-xs text-slate-400 leading-relaxed">{project.solution}</p>
-                </div>
-
-                {/* Features */}
-                <div>
-                  <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-2">
-                    <span className="w-3 h-px bg-blue-400/60" />
-                    Key Features
-                  </h4>
-                  <ul className="space-y-1">
-                    {project.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-xs text-slate-400">
-                        <ChevronRight size={12} className="text-blue-400 mt-0.5 shrink-0" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Impact */}
-                <div>
-                  <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-2">
-                    <span className="w-3 h-px bg-amber-400/60" />
-                    Business Impact
-                  </h4>
-                  <ul className="space-y-1">
-                    {project.impact.map((i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-slate-400">
-                        <ChevronRight size={12} className="text-amber-400 mt-0.5 shrink-0" />
-                        {i}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Architecture */}
-                <div>
-                  <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-2">
-                    <span className="w-3 h-px bg-violet-400/60" />
-                    Architecture
-                  </h4>
-                  <p className="text-xs text-slate-400 leading-relaxed font-mono bg-white/[0.03] rounded-lg p-3 border border-white/5">
-                    {project.architecture}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Action row */}
-        <div className="flex items-center justify-between flex-wrap gap-3">
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="text-xs text-blue-400 font-medium flex items-center gap-1 hover:text-blue-300 transition-colors"
-          >
-            {expanded ? "Hide Details" : "View Case Study"}
-            <ChevronRight
-              size={12}
-              className={`transition-transform ${expanded ? "rotate-90" : ""}`}
-            />
-          </button>
-
-          <div className="flex items-center gap-2">
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary py-1.5 px-3 text-xs"
-                aria-label={`GitHub repository for ${project.title}`}
-              >
-                <GithubIcon size={13} />
-                GitHub
-              </a>
-            )}
-            {project.liveUrl && project.liveUrl !== "#" && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary py-1.5 px-3 text-xs"
-                aria-label={`Live demo for ${project.title}`}
-              >
-                <ExternalLink size={13} />
-                Live Demo
-              </a>
-            )}
+            <div className="flex items-center gap-2">
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary py-1.5 px-3 text-xs"
+                  aria-label={`GitHub repository for ${project.title}`}
+                >
+                  <GithubIcon size={13} />
+                  GitHub
+                </a>
+              )}
+              {project.liveUrl && project.liveUrl !== "#" && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary py-1.5 px-3 text-xs"
+                  aria-label={`Live demo for ${project.title}`}
+                >
+                  <ExternalLink size={13} />
+                  Live Demo
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -310,7 +318,7 @@ export default function ProjectsSection() {
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="grid md:grid-cols-2 xl:grid-cols-3 gap-6"
+            className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 items-stretch"
           >
             {filtered.map((project) => (
               <ProjectCard key={project.id} project={project} />
