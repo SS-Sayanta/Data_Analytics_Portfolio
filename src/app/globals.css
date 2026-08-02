@@ -179,8 +179,20 @@ body {
 
 /* ─── Section Styles ───────────────────────────────────────────────────────── */
 .section {
-  padding: 6rem 0;
+  padding: 3.5rem 0;
   position: relative;
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 4.5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 6rem 0;
+  }
 }
 
 .section-label {
@@ -201,6 +213,30 @@ body {
   width: 24px;
   height: 1px;
   background: var(--accent-blue);
+}
+
+/* ─── Responsive utilities ─────────────────────────────────────────────────── */
+.container-max {
+  width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-max {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-max {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 /* ─── Skill Bar ────────────────────────────────────────────────────────────── */

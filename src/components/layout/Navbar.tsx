@@ -177,8 +177,10 @@ export default function Navbar() {
 
               <div className="px-6 py-5 border-t border-white/5">
                 <a
-                  href="/Sayanta_Ghosh_Resume.pdf"
-                  download
+                  href="/resume.pdf"
+                  download="Sayanta_Ghosh_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-primary w-full justify-center"
                 >
                   <Download size={14} />
