@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
+import EducationSection from "@/components/sections/EducationSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import DashboardSection from "@/components/sections/DashboardSection";
@@ -36,6 +37,12 @@ export default function Home() {
         </div>
 
         <AboutSection />
+
+        <div className="container-max">
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        </div>
+
+        <EducationSection />
 
         <div className="container-max">
           <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />

@@ -84,6 +84,18 @@ export interface ContactFormData {
   message: string;
 }
 
+export interface Education {
+  id: string;
+  degree: string;
+  institution: string;
+  location?: string;
+  timeline: string;
+  grade: string;
+  specialization?: string;
+  details?: string[];
+  current?: boolean;
+}
+
 export interface AnimationVariant {
   hidden: object;
   visible: object;

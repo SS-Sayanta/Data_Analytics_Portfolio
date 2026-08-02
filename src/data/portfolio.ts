@@ -1,8 +1,9 @@
-import { Project, Skill, Certification, Achievement, NavItem } from "@/types";
+import { Project, Skill, Certification, Achievement, NavItem, Education } from "@/types";
 
 // ─── Navigation ──────────────────────────────────────────────────────────────
 export const navItems: NavItem[] = [
   { label: "About", href: "#about" },
+  { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Certifications", href: "#certifications" },
@@ -451,10 +452,48 @@ export const githubStats = {
   streak: 89,
   contributions: 1247,
   languages: [
-    { name: "Python", percentage: 42, color: "#3B82F6" },
-    { name: "SQL", percentage: 25, color: "#8B5CF6" },
-    { name: "TypeScript", percentage: 15, color: "#06B6D4" },
-    { name: "DAX/M", percentage: 10, color: "#F59E0B" },
-    { name: "Others", percentage: 8, color: "#6B7280" },
+    { name: "Python", percentage: 45, color: "#3776AB" },
+    { name: "SQL", percentage: 35, color: "#F59E0B" },
+    { name: "DAX / Power Query", percentage: 12, color: "#8B5CF6" },
+    { name: "HTML/CSS / Jupyter", percentage: 8, color: "#06B6D4" },
   ],
 };
+
+// ─── Education Data ────────────────────────────────────────────────────────────
+export const educationData: Education[] = [
+  {
+    id: "bca-svu",
+    degree: "Bachelor of Computer Application (BCA)",
+    institution: "Swami Vivekananda University",
+    timeline: "2023 – 2027 (Final Year)",
+    grade: "CGPA: 1st Yr — 7.33 | 2nd Yr — 7.58 | 3rd Yr — 8.38",
+    specialization: "Data Analytics & Business Intelligence",
+    current: true,
+    details: [
+      "Specializing in Data Analytics, Database Management Systems (DBMS), Data Structures, and BI Solutions.",
+      "Consistently improved academic performance with 8.38 CGPA in 3rd Year.",
+    ],
+  },
+  {
+    id: "hs-wbbse",
+    degree: "Higher Secondary (12th Standard)",
+    institution: "Halisahar High School",
+    location: "WBBSE Board",
+    timeline: "2022",
+    grade: "Score: 69%",
+    details: [
+      "Completed Higher Secondary Education under West Bengal Board of Secondary Education (WBBSE).",
+    ],
+  },
+  {
+    id: "secondary-wbbse",
+    degree: "Secondary Education (10th Standard)",
+    institution: "Pannalal Institution, Kalyani",
+    location: "WBBSE Board",
+    timeline: "2020",
+    grade: "Score: 67%",
+    details: [
+      "Completed Secondary Education under West Bengal Board of Secondary Education (WBBSE).",
+    ],
+  },
+];

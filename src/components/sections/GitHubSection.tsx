@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { GitCommit, Star, GitFork, Flame, Code2 } from "lucide-react";
+import { GitCommit, Star, GitFork, Flame, Code2, Database, CheckCircle2 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/icons";
 import { githubStats } from "@/data/portfolio";
 import { staggerContainer, fadeUp, scaleIn, viewportConfig } from "@/lib/animations";
@@ -89,65 +89,141 @@ export default function GitHubSection() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="mb-16"
+          className="mb-10"
         >
           <motion.div variants={fadeUp} className="section-label mb-3">
-            GitHub Activity
+            Coding & Problem Solving
           </motion.div>
-          <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            GitHub <span className="gradient-text">Statistics</span>
-          </motion.h2>
-          <motion.p variants={fadeUp} className="text-slate-400 max-w-xl">
-            An active open-source contributor with consistent commits, community engagement,
-            and projects spanning data analytics, AI, and web development.
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-4">
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+              Problem Solving <span className="gradient-text">Stats</span>
+            </motion.h2>
+            <motion.div
+              variants={fadeUp}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-semibold w-fit"
+            >
+              <CheckCircle2 size={16} className="text-blue-400" />
+              <span>150+ Total Problems Solved</span>
+            </motion.div>
+          </div>
+          <motion.p variants={fadeUp} className="text-slate-400 max-w-xl text-sm sm:text-base">
+            Demonstrated proficiency in SQL analytics, complex query optimization, algorithm design, and Python data manipulation.
           </motion.p>
         </motion.div>
 
-        {/* Stats grid */}
+        {/* Problem Solving Cards Grid */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-10"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
         >
-          <StatCard
-            icon={GitCommit}
-            label="Total Commits"
-            value={githubStats.totalCommits}
-            color="#3b82f6"
-          />
-          <StatCard
-            icon={GithubIcon}
-            label="Repositories"
-            value={githubStats.totalRepos}
-            color="#8b5cf6"
-          />
-          <StatCard
-            icon={Star}
-            label="Stars Earned"
-            value={githubStats.totalStars}
-            color="#f59e0b"
-          />
-          <StatCard
-            icon={GitFork}
-            label="Forks"
-            value={githubStats.totalForks}
-            color="#10b981"
-          />
-          <StatCard
-            icon={Flame}
-            label="Day Streak"
-            value={githubStats.streak}
-            color="#f97316"
-            suffix=" 🔥"
-          />
-          <StatCard
-            icon={Code2}
-            label="Contributions"
-            value={githubStats.contributions}
-            color="#06b6d4"
-          />
+          {/* SQL Card */}
+          <motion.div
+            variants={scaleIn}
+            className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all duration-300 shadow-xl flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                    <Database size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white leading-tight">SQL Analytics</h3>
+                    <p className="text-xs text-slate-400">Query Optimization & Data Analytics</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <span className="text-2xl font-extrabold text-white metric-value">100</span>
+                  <span className="text-xs text-slate-400 block font-medium">Problems</span>
+                </div>
+              </div>
+
+              {/* Difficulty Badges */}
+              <div className="grid grid-cols-3 gap-3 mb-6">
+                <div className="px-3 py-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-center">
+                  <span className="text-xs font-semibold block uppercase tracking-wider">Easy</span>
+                  <span className="text-lg font-bold text-emerald-300 metric-value">50</span>
+                </div>
+                <div className="px-3 py-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 text-center">
+                  <span className="text-xs font-semibold block uppercase tracking-wider">Medium</span>
+                  <span className="text-lg font-bold text-amber-300 metric-value">30</span>
+                </div>
+                <div className="px-3 py-2 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20 text-center">
+                  <span className="text-xs font-semibold block uppercase tracking-wider">Hard</span>
+                  <span className="text-lg font-bold text-rose-300 metric-value">20</span>
+                </div>
+              </div>
+
+              {/* Progress bar */}
+              <div className="space-y-1.5">
+                <div className="flex justify-between text-xs text-slate-400">
+                  <span>Difficulty Distribution</span>
+                  <span>100 Solved</span>
+                </div>
+                <div className="h-2.5 w-full bg-slate-800 rounded-full overflow-hidden flex">
+                  <div className="h-full bg-emerald-500" style={{ width: "50%" }} title="Easy: 50" />
+                  <div className="h-full bg-amber-500" style={{ width: "30%" }} title="Medium: 30" />
+                  <div className="h-full bg-rose-500" style={{ width: "20%" }} title="Hard: 20" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Python Card */}
+          <motion.div
+            variants={scaleIn}
+            className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all duration-300 shadow-xl flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                    <Code2 size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white leading-tight">Python Programming</h3>
+                    <p className="text-xs text-slate-400">Data Structures & Algorithm Logic</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <span className="text-2xl font-extrabold text-white metric-value">50</span>
+                  <span className="text-xs text-slate-400 block font-medium">Problems</span>
+                </div>
+              </div>
+
+              {/* Difficulty Badges */}
+              <div className="grid grid-cols-3 gap-3 mb-6">
+                <div className="px-3 py-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-center">
+                  <span className="text-xs font-semibold block uppercase tracking-wider">Easy</span>
+                  <span className="text-lg font-bold text-emerald-300 metric-value">30</span>
+                </div>
+                <div className="px-3 py-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 text-center">
+                  <span className="text-xs font-semibold block uppercase tracking-wider">Medium</span>
+                  <span className="text-lg font-bold text-amber-300 metric-value">20</span>
+                </div>
+                <div className="px-3 py-2 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20 text-center">
+                  <span className="text-xs font-semibold block uppercase tracking-wider">Hard</span>
+                  <span className="text-lg font-bold text-rose-300 metric-value">10</span>
+                </div>
+              </div>
+
+              {/* Progress bar */}
+              <div className="space-y-1.5">
+                <div className="flex justify-between text-xs text-slate-400">
+                  <span>Difficulty Distribution</span>
+                  <span>50 Solved</span>
+                </div>
+                <div className="h-2.5 w-full bg-slate-800 rounded-full overflow-hidden flex">
+                  <div className="h-full bg-emerald-500" style={{ width: "50%" }} title="Easy: 30" />
+                  <div className="h-full bg-amber-500" style={{ width: "33%" }} title="Medium: 20" />
+                  <div className="h-full bg-rose-500" style={{ width: "17%" }} title="Hard: 10" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Language breakdown + contribution heatmap */}
@@ -158,105 +234,72 @@ export default function GitHubSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={viewportConfig}
             transition={{ duration: 0.6 }}
-            className="glass rounded-2xl p-6 border border-white/[0.06]"
+            className="glass rounded-2xl p-6 border border-white/[0.06] flex flex-col justify-between"
           >
-            <h3 className="text-sm font-semibold text-white mb-6 flex items-center gap-2">
-              <Code2 size={16} className="text-blue-400" />
-              Top Languages
-            </h3>
-            <div className="space-y-4">
-              {githubStats.languages.map((lang) => (
-                <div key={lang.name}>
-                  <div className="flex justify-between text-xs mb-1.5">
-                    <span className="font-medium text-slate-300">{lang.name}</span>
-                    <span className="font-mono text-slate-500">{lang.percentage}%</span>
+            <div>
+              <h3 className="text-sm font-semibold text-white mb-6 flex items-center gap-2">
+                <Code2 size={16} className="text-blue-400" />
+                Top Languages (Data & Analytics Focus)
+              </h3>
+              <div className="space-y-4 mb-6">
+                {githubStats.languages.map((lang) => (
+                  <div key={lang.name}>
+                    <div className="flex justify-between text-xs mb-1.5">
+                      <span className="font-medium text-slate-300">{lang.name}</span>
+                      <span className="font-mono text-slate-500">{lang.percentage}%</span>
+                    </div>
+                    <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${lang.percentage}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="h-full rounded-full"
+                        style={{
+                          background: lang.color,
+                          boxShadow: `0 0 8px ${lang.color}66`,
+                        }}
+                      />
+                    </div>
                   </div>
-                  <div className="h-2 rounded-full bg-white/5 overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${lang.percentage}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, ease: "easeOut" }}
-                      className="h-full rounded-full"
-                      style={{
-                        background: lang.color,
-                        boxShadow: `0 0 8px ${lang.color}66`,
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            {/* Language donut visual */}
-            <div className="mt-6 flex flex-wrap gap-2">
-              {githubStats.languages.map((lang) => (
-                <div key={lang.name} className="flex items-center gap-1.5">
-                  <div
-                    className="w-2.5 h-2.5 rounded-full"
-                    style={{ background: lang.color }}
-                  />
-                  <span className="text-xs text-slate-500">{lang.name}</span>
-                </div>
-              ))}
+            {/* Real Top Languages Card Embed */}
+            <div className="mt-4 pt-4 border-t border-white/5">
+              <img
+                src="https://github-readme-stats.vercel.app/api/top-langs/?username=SS-Sayanta&theme=dark&hide_border=true&layout=compact"
+                alt="SS-Sayanta GitHub Top Languages"
+                className="w-full rounded-xl object-contain"
+                loading="lazy"
+              />
             </div>
           </motion.div>
 
-          {/* Contribution heatmap visual */}
+          {/* Real Contribution Heatmap Visual */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={viewportConfig}
             transition={{ duration: 0.6 }}
-            className="glass rounded-2xl p-6 border border-white/[0.06]"
+            className="glass rounded-2xl p-6 border border-white/[0.06] flex flex-col justify-between"
           >
-            <h3 className="text-sm font-semibold text-white mb-6 flex items-center gap-2">
-              <Flame size={16} className="text-orange-400" />
-              Contribution Activity
-            </h3>
+            <div>
+              <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+                <Flame size={16} className="text-orange-400" />
+                Live GitHub Activity Graph
+              </h3>
 
-            {/* Simulated contribution grid */}
-            <div className="overflow-x-auto max-w-full pb-2 scrollbar-thin">
-              <div className="min-w-[650px] w-full">
-                <div className="grid gap-1" style={{ gridTemplateRows: "repeat(7, 1fr)" }}>
-                  {Array.from({ length: 7 }).map((_, row) => (
-                    <div key={row} className="flex gap-1">
-                      {Array.from({ length: 52 }).map((_, col) => {
-                        const hash = (row * 37 + col * 17) % 100;
-                        const intensity = hash / 100;
-                        const hasCommit = hash > 45;
-                        const alpha = hasCommit ? Math.min(intensity * 1.4, 1) : 0.07;
-                        return (
-                          <div
-                            key={col}
-                            className="w-3 h-3 rounded-sm transition-opacity hover:opacity-100"
-                            style={{
-                              background: hasCommit
-                                ? `rgba(59,130,246,${alpha})`
-                                : "rgba(255,255,255,0.05)",
-                            }}
-                            title={hasCommit ? `${Math.floor(intensity * 10)} contributions` : "No contributions"}
-                          />
-                        );
-                      })}
-                    </div>
-                  ))}
-                </div>
+              {/* Real GitHub Activity Graph Embed */}
+              <div className="overflow-x-auto max-w-full pb-2 scrollbar-thin rounded-xl">
+                <img
+                  src="https://github-readme-activity-graph.vercel.app/graph?username=SS-Sayanta&theme=react-dark&hide_border=true"
+                  alt="SS-Sayanta GitHub Activity Graph"
+                  className="w-full rounded-xl min-w-[500px]"
+                  loading="lazy"
+                />
               </div>
-            </div>
-
-            <div className="mt-4 flex items-center justify-between text-xs text-slate-600">
-              <span>Less</span>
-              <div className="flex gap-1">
-                {[0.1, 0.3, 0.5, 0.7, 0.9].map((alpha) => (
-                  <div
-                    key={alpha}
-                    className="w-3 h-3 rounded-sm"
-                    style={{ background: `rgba(59,130,246,${alpha})` }}
-                  />
-                ))}
-              </div>
-              <span>More</span>
             </div>
 
             {/* CTA */}
@@ -264,10 +307,10 @@ export default function GitHubSection() {
               href="https://github.com/SS-Sayanta"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+              className="mt-5 flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors pt-3 border-t border-white/5"
             >
               <GithubIcon size={15} />
-              View full profile on GitHub →
+              View full live profile on GitHub →
             </a>
           </motion.div>
         </div>
