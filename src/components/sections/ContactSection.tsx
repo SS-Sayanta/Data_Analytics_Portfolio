@@ -43,9 +43,26 @@ export default function ContactSection() {
     e.preventDefault();
     if (!validate()) return;
     setStatus("loading");
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 1500));
-    setStatus("success");
+    try {
+      const response = await fetch("https://formspree.io/f/xeeyyoyb", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", subject: "", message: "" });
+        setErrors({});
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      setStatus("error");
+    }
   };
 
   const contactInfo = [
@@ -181,55 +198,57 @@ export default function ContactSection() {
                   </button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate className="space-y-5">
-                  <h3 className="text-lg font-semibold text-white mb-6">Send a Message</h3>
+                <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5 sm:gap-6">
+                  <h3 className="text-lg font-semibold text-white mb-1">Send a Message</h3>
 
-                  <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
                     {/* Name */}
-                    <div>
+                    <div className="flex flex-col gap-2">
                       <label
                         htmlFor="contact-name"
-                        className="block text-xs font-medium text-slate-400 mb-2"
+                        className="block text-xs sm:text-sm font-semibold text-slate-300 uppercase tracking-wider"
                       >
                         Full Name *
                       </label>
                       <input
                         id="contact-name"
+                        name="name"
                         type="text"
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         placeholder="Jane Smith"
-                        className={`w-full bg-white/[0.04] border ${
-                          errors.name ? "border-red-500/50" : "border-white/10"
-                        } rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors`}
+                        className={`w-full box-border h-12 px-4 py-3 bg-slate-900/90 border ${
+                          errors.name ? "border-red-500/50" : "border-slate-700"
+                        } rounded-xl text-slate-100 placeholder:text-slate-500 text-sm leading-normal focus:border-blue-500 focus:outline-none transition-all`}
                       />
                       {errors.name && (
-                        <p className="mt-1 text-xs text-red-400 flex items-center gap-1">
+                        <p className="text-xs text-red-400 flex items-center gap-1 mt-0.5">
                           <AlertCircle size={11} /> {errors.name}
                         </p>
                       )}
                     </div>
 
                     {/* Email */}
-                    <div>
+                    <div className="flex flex-col gap-2">
                       <label
                         htmlFor="contact-email"
-                        className="block text-xs font-medium text-slate-400 mb-2"
+                        className="block text-xs sm:text-sm font-semibold text-slate-300 uppercase tracking-wider"
                       >
                         Email Address *
                       </label>
                       <input
                         id="contact-email"
+                        name="email"
                         type="email"
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                         placeholder="jane@company.com"
-                        className={`w-full bg-white/[0.04] border ${
-                          errors.email ? "border-red-500/50" : "border-white/10"
-                        } rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors`}
+                        className={`w-full box-border h-12 px-4 py-3 bg-slate-900/90 border ${
+                          errors.email ? "border-red-500/50" : "border-slate-700"
+                        } rounded-xl text-slate-100 placeholder:text-slate-500 text-sm leading-normal focus:border-blue-500 focus:outline-none transition-all`}
                       />
                       {errors.email && (
-                        <p className="mt-1 text-xs text-red-400 flex items-center gap-1">
+                        <p className="text-xs text-red-400 flex items-center gap-1 mt-0.5">
                           <AlertCircle size={11} /> {errors.email}
                         </p>
                       )}
@@ -237,62 +256,70 @@ export default function ContactSection() {
                   </div>
 
                   {/* Subject */}
-                  <div>
+                  <div className="flex flex-col gap-2">
                     <label
                       htmlFor="contact-subject"
-                      className="block text-xs font-medium text-slate-400 mb-2"
+                      className="block text-xs sm:text-sm font-semibold text-slate-300 uppercase tracking-wider"
                     >
                       Subject *
                     </label>
                     <input
                       id="contact-subject"
+                      name="subject"
                       type="text"
                       value={form.subject}
                       onChange={(e) => setForm({ ...form, subject: e.target.value })}
                       placeholder="Data Analyst Opportunity at Acme Corp"
-                      className={`w-full bg-white/[0.04] border ${
-                        errors.subject ? "border-red-500/50" : "border-white/10"
-                      } rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors`}
+                      className={`w-full box-border h-12 px-4 py-3 bg-slate-900/90 border ${
+                        errors.subject ? "border-red-500/50" : "border-slate-700"
+                      } rounded-xl text-slate-100 placeholder:text-slate-500 text-sm leading-normal focus:border-blue-500 focus:outline-none transition-all`}
                     />
                     {errors.subject && (
-                      <p className="mt-1 text-xs text-red-400 flex items-center gap-1">
+                      <p className="text-xs text-red-400 flex items-center gap-1 mt-0.5">
                         <AlertCircle size={11} /> {errors.subject}
                       </p>
                     )}
                   </div>
 
                   {/* Message */}
-                  <div>
+                  <div className="flex flex-col gap-2">
                     <label
                       htmlFor="contact-message"
-                      className="block text-xs font-medium text-slate-400 mb-2"
+                      className="block text-xs sm:text-sm font-semibold text-slate-300 uppercase tracking-wider"
                     >
                       Message *
                     </label>
                     <textarea
                       id="contact-message"
+                      name="message"
                       rows={5}
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       placeholder="Hi Sayanta, I came across your portfolio and would love to discuss..."
-                      className={`w-full bg-white/[0.04] border ${
-                        errors.message ? "border-red-500/50" : "border-white/10"
-                      } rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors resize-none`}
+                      className={`w-full box-border px-4 py-3 bg-slate-900/90 border ${
+                        errors.message ? "border-red-500/50" : "border-slate-700"
+                      } rounded-xl text-slate-100 placeholder:text-slate-500 text-sm leading-relaxed focus:border-blue-500 focus:outline-none transition-all resize-none`}
                     />
                     {errors.message && (
-                      <p className="mt-1 text-xs text-red-400 flex items-center gap-1">
+                      <p className="text-xs text-red-400 flex items-center gap-1 mt-0.5">
                         <AlertCircle size={11} /> {errors.message}
                       </p>
                     )}
-                    <p className="mt-1 text-xs text-slate-600 text-right">
+                    <p className="text-xs text-slate-600 text-right mt-0.5">
                       {form.message.length} chars
                     </p>
                   </div>
 
+                  {status === "error" && (
+                    <p className="text-xs text-red-400 flex items-center justify-center gap-1.5 p-2.5 bg-red-500/10 border border-red-500/20 rounded-xl">
+                      <AlertCircle size={14} /> Failed to send message. Please try again.
+                    </p>
+                  )}
+
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="btn-primary w-full justify-center"
+                    className="btn-primary w-full justify-center mt-3 sm:mt-4 py-3.5 px-6 rounded-xl font-semibold text-sm shadow-lg"
                   >
                     {status === "loading" ? (
                       <>
