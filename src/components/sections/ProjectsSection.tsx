@@ -88,8 +88,8 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* Content */}
-      <div className="p-6 flex flex-col justify-between flex-1 gap-4">
-        <div className="flex flex-col gap-3">
+      <div className="p-5 sm:p-6 flex flex-col justify-between flex-1 space-y-4">
+        <div className="flex flex-col space-y-3">
           {/* Featured badge on top row if present */}
           {project.featured && (
             <div>
@@ -200,8 +200,8 @@ function ProjectCard({ project }: { project: Project }) {
             )}
           </AnimatePresence>
 
-          {/* Action row */}
-          <div className="pt-4 border-t border-slate-800/50 flex items-center justify-between flex-wrap gap-3">
+          {/* Action row / Footer */}
+          <div className="pt-4 mt-auto border-t border-slate-800/80 flex items-center justify-between gap-4 flex-wrap">
             <button
               onClick={() => setExpanded(!expanded)}
               className="text-xs text-blue-400 font-medium flex items-center gap-1 hover:text-blue-300 transition-colors"
@@ -213,25 +213,25 @@ function ProjectCard({ project }: { project: Project }) {
               />
             </button>
 
-            <div className="flex items-center gap-2">
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary py-1.5 px-3 text-xs"
-                  aria-label={`GitHub repository for ${project.title}`}
-                >
-                  <GithubIcon size={13} />
-                  GitHub
-                </a>
-              )}
+            <div className="flex items-center gap-2 relative z-20 shrink-0">
+              <a
+                href={project.githubUrl || "https://github.com/SS-Sayanta"}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="relative z-20 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 border border-slate-700/70 hover:border-slate-500 text-slate-200 hover:text-white text-xs font-semibold shadow-md transition-all duration-200 cursor-pointer shrink-0"
+                aria-label={`GitHub repository for ${project.title}`}
+              >
+                <GithubIcon size={14} className="text-slate-300 shrink-0" />
+                <span>GitHub</span>
+              </a>
               {project.liveUrl && project.liveUrl !== "#" && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary py-1.5 px-3 text-xs"
+                  onClick={(e) => e.stopPropagation()}
+                  className="relative z-20 btn-primary py-1.5 px-3 text-xs pointer-events-auto cursor-pointer"
                   aria-label={`Live demo for ${project.title}`}
                 >
                   <ExternalLink size={13} />
@@ -318,7 +318,7 @@ export default function ProjectsSection() {
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 items-stretch"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch"
           >
             {filtered.map((project) => (
               <ProjectCard key={project.id} project={project} />

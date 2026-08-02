@@ -51,7 +51,7 @@ export const projects: Project[] = [
       "Building scalable ML pipelines for live sports data",
       "Ensemble model tuning for temporal prediction tasks",
     ],
-    githubUrl: "https://github.com/sayanta-ghosh",
+    githubUrl: "https://github.com/SS-Sayanta/FIFA-WC-2026-PowerBI-Dashboard",
     featured: true,
     year: 2026,
     metrics: [
@@ -101,7 +101,7 @@ export const projects: Project[] = [
       "Advanced RLS implementation in Power BI",
       "Performance tuning large semantic models with aggregations",
     ],
-    githubUrl: "https://github.com/sayanta-ghosh",
+    githubUrl: "https://github.com/SS-Sayanta/Swiggy-Sales-Analysis-Dashboard",
     featured: true,
     year: 2025,
     metrics: [
@@ -151,7 +151,7 @@ export const projects: Project[] = [
       "SHAP-based model explainability for clinical use",
       "Healthcare-specific data quality challenges",
     ],
-    githubUrl: "https://github.com/sayanta-ghosh",
+    githubUrl: "https://github.com/SS-Sayanta/Hospital-Emergency-Analytics-Dashboard",
     featured: true,
     year: 2025,
     metrics: [
@@ -201,7 +201,7 @@ export const projects: Project[] = [
       "Behavioral segmentation with RFM and k-means",
       "OTT-specific engagement metric design",
     ],
-    githubUrl: "https://github.com/sayanta-ghosh",
+    githubUrl: "https://github.com/SS-Sayanta",
     featured: false,
     year: 2025,
     metrics: [
@@ -251,7 +251,7 @@ export const projects: Project[] = [
       "Personalised ML: transfer learning from population to individual",
       "Healthcare AI ethics and responsible explainability",
     ],
-    githubUrl: "https://github.com/sayanta-ghosh",
+    githubUrl: "https://github.com/SS-Sayanta",
     featured: true,
     year: 2025,
     metrics: [
@@ -301,7 +301,7 @@ export const projects: Project[] = [
       "Domain adaptation for agricultural NLP",
       "Designing AI products for non-tech users in rural India",
     ],
-    githubUrl: "https://github.com/sayanta-ghosh",
+    githubUrl: "https://github.com/SS-Sayanta",
     liveUrl: "https://krishimitra.vercel.app",
     featured: true,
     year: 2024,
@@ -352,7 +352,7 @@ export const projects: Project[] = [
       "Advanced Framer Motion scroll-linked animations",
       "WCAG 2.1 AA accessibility with glassmorphism design",
     ],
-    githubUrl: "https://github.com/sayanta-ghosh",
+    githubUrl: "https://github.com/SS-Sayanta",
     liveUrl: "#",
     featured: false,
     year: 2026,

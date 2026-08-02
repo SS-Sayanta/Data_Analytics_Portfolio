@@ -59,8 +59,8 @@ export default function ContactSection() {
     {
       icon: LinkedInIcon,
       label: "LinkedIn",
-      value: "linkedin.com/in/SayantaGhosh",
-      href: "https://linkedin.com/in/SayantaGhosh",
+      value: "linkedin.com/in/sayanta-ghosh-4b3a4231a",
+      href: "https://www.linkedin.com/in/sayanta-ghosh-4b3a4231a/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B0iLtXRMVSjOj%2B5KpHnK2hg%3D%3D",
       color: "#0a66c2",
     },
     {
@@ -82,7 +82,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="section" aria-label="Contact section">
       <div className="container-max">
-        <div className="grid lg:grid-cols-2 gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Left: Info */}
           <motion.div
             variants={staggerContainer}
@@ -100,14 +100,14 @@ export default function ContactSection() {
               Let&apos;s{" "}
               <span className="gradient-text">Connect</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-slate-400 leading-relaxed mb-10">
+            <motion.p variants={fadeUp} className="text-slate-400 leading-relaxed">
               I&apos;m actively exploring full-time Data Analyst, BI Developer, and AI Engineering
               roles. Whether you have an opportunity, a project collaboration, or just want to talk
               data — I&apos;d love to hear from you.
             </motion.p>
 
-            {/* Contact cards */}
-            <motion.div variants={staggerContainer} className="space-y-3">
+            {/* Contact cards list container */}
+            <motion.div variants={staggerContainer} className="flex flex-col gap-4 md:gap-5 mt-6">
               {contactInfo.map((item) => (
                 <motion.a
                   key={item.label}
@@ -115,7 +115,7 @@ export default function ContactSection() {
                   href={item.href}
                   target={item.href.startsWith("http") ? "_blank" : item.href.startsWith("mailto") ? undefined : undefined}
                   rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-4 glass rounded-xl p-4 border border-white/[0.06] hover:border-white/12 transition-all duration-200 hover:translate-x-1 group"
+                  className="flex items-center gap-4 glass rounded-xl p-4 sm:p-5 border border-white/[0.06] hover:border-white/12 transition-all duration-200 hover:translate-x-1 group"
                 >
                   <div
                     className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
@@ -123,29 +123,29 @@ export default function ContactSection() {
                   >
                     <item.icon size={17} style={{ color: item.color }} />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <p className="text-xs text-slate-500 font-medium">{item.label}</p>
-                    <p className="text-sm text-slate-300 group-hover:text-white transition-colors">
+                    <p className="text-sm sm:text-base text-slate-300 group-hover:text-white transition-colors truncate">
                       {item.value}
                     </p>
                   </div>
                 </motion.a>
               ))}
-            </motion.div>
 
-            {/* Availability notice */}
-            <motion.div
-              variants={fadeUp}
-              className="mt-8 flex items-center gap-3 glass rounded-xl p-4 border border-emerald-500/20"
-            >
-              <div className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400" />
-              </div>
-              <p className="text-sm text-slate-400">
-                <span className="text-emerald-400 font-medium">Open to opportunities</span> —
-                Actively looking for Data Analyst & BI Developer roles
-              </p>
+              {/* Availability notice card */}
+              <motion.div
+                variants={fadeUp}
+                className="flex items-center gap-3.5 sm:gap-4 glass rounded-xl p-4 sm:p-5 border border-emerald-500/20"
+              >
+                <div className="relative flex h-3 w-3 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400" />
+                </div>
+                <p className="text-sm text-slate-400">
+                  <span className="text-emerald-400 font-medium">Open to opportunities</span> —
+                  Actively looking for Data Analyst & BI Developer roles
+                </p>
+              </motion.div>
             </motion.div>
           </motion.div>
 

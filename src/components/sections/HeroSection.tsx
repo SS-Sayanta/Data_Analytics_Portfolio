@@ -96,13 +96,13 @@ export default function HeroSection() {
         {/* 2-Column Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start w-full mb-12 lg:mb-16">
           {/* Left Column: Text Content */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          <div className="lg:col-span-7 flex flex-col items-start text-left space-y-4 sm:space-y-6 px-4 sm:px-6">
             {/* Available badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full glass border border-emerald-500/20"
+              className="inline-flex items-center gap-2 mt-4 mb-4 sm:mt-6 sm:mb-6 px-4 py-2 rounded-full glass border border-emerald-500/20"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -119,7 +119,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-none mb-6">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight mb-3 sm:mb-4">
                 <span className="text-white">Sayanta</span>
                 <span className="gradient-text ml-3 sm:ml-4 lg:ml-0 lg:block">Ghosh</span>
               </h1>
@@ -130,7 +130,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="h-10 flex items-center mb-6 overflow-hidden"
+              className="h-10 flex items-center overflow-hidden"
             >
               <p className="text-lg sm:text-2xl font-light text-slate-300 whitespace-nowrap">
                 <span className="text-blue-400 font-medium">{displayText}</span>
@@ -143,7 +143,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.65 }}
-              className="max-w-xl text-base sm:text-lg text-slate-400 leading-relaxed mb-8"
+              className="max-w-xl text-base sm:text-lg text-slate-400 leading-relaxed"
             >
               Transforming raw data into actionable business insights. Specializing in Power BI
               dashboards, SQL querying, and Python data analytics.{" "}
@@ -162,8 +162,10 @@ export default function HeroSection() {
                 View My Work
               </Link>
               <a
-                href="/Sayanta_Ghosh_Resume.pdf"
-                download
+                href="/resume.pdf"
+                download="Sayanta_Ghosh_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-secondary"
               >
                 <Download size={16} />
@@ -176,7 +178,7 @@ export default function HeroSection() {
                   { icon: GithubIcon, href: "https://github.com/SS-Sayanta", label: "GitHub" },
                   {
                     icon: LinkedInIcon,
-                    href: "https://linkedin.com/in/SayantaGhosh",
+                    href: "https://www.linkedin.com/in/sayanta-ghosh-4b3a4231a/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B0iLtXRMVSjOj%2B5KpHnK2hg%3D%3D",
                     label: "LinkedIn",
                   },
                   { icon: Mail, href: "mailto:sayantaghosh002@gmail.com", label: "Email" },

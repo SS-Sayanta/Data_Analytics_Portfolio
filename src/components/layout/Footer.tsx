@@ -15,7 +15,7 @@ export default function Footer() {
 
   const socialLinks = [
     { icon: GithubIcon, href: "https://github.com/SS-Sayanta", label: "GitHub" },
-    { icon: LinkedInIcon, href: "https://linkedin.com/in/SayantaGhosh", label: "LinkedIn" },
+    { icon: LinkedInIcon, href: "https://www.linkedin.com/in/sayanta-ghosh-4b3a4231a/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B0iLtXRMVSjOj%2B5KpHnK2hg%3D%3D", label: "LinkedIn" },
     { icon: Mail, href: "mailto:sayantaghosh002@gmail.com", label: "Email" },
   ];
 
@@ -79,8 +79,10 @@ export default function Footer() {
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="/Sayanta_Ghosh_Resume.pdf"
-                  download
+                  href="/resume.pdf"
+                  download="Sayanta_Ghosh_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
                 >
                   Download Resume
@@ -98,7 +100,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://linkedin.com/in/SayantaGhosh"
+                  href="https://www.linkedin.com/in/sayanta-ghosh-4b3a4231a/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B0iLtXRMVSjOj%2B5KpHnK2hg%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-slate-500 hover:text-slate-300 transition-colors"
