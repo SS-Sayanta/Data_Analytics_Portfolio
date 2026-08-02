@@ -105,7 +105,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="antialiased min-h-screen bg-[#030712] text-white overflow-x-hidden"
+        className="antialiased min-h-screen bg-[#030712] text-white overflow-x-hidden w-full max-w-full"
         suppressHydrationWarning
       >
         {children}

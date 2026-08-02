@@ -102,7 +102,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 mt-4 mb-4 sm:mt-6 sm:mb-6 px-4 py-2 rounded-full glass border border-emerald-500/20"
+              className="inline-flex items-center gap-2 mt-2 mb-4 sm:mb-6 px-4 py-2 rounded-full glass border border-emerald-500/20"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -119,9 +119,9 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight mb-3 sm:mb-4">
-                <span className="text-white">Sayanta</span>
-                <span className="gradient-text ml-3 sm:ml-4 lg:ml-0 lg:block">Ghosh</span>
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-3 sm:mb-4">
+                <span className="text-white">Sayanta </span>
+                <span className="gradient-text">Ghosh</span>
               </h1>
             </motion.div>
 
@@ -130,11 +130,11 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="h-10 flex items-center overflow-hidden"
+              className="min-h-[2.5rem] flex items-center"
             >
-              <p className="text-lg sm:text-2xl font-light text-slate-300 whitespace-nowrap">
+              <p className="text-sm sm:text-lg text-slate-300 leading-normal font-light">
                 <span className="text-blue-400 font-medium">{displayText}</span>
-                <span className="inline-block w-0.5 h-6 bg-blue-400 ml-1 animate-pulse" />
+                <span className="inline-block w-0.5 h-5 bg-blue-400 ml-1 animate-pulse" />
               </p>
             </motion.div>
 

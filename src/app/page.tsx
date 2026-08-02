@@ -27,7 +27,7 @@ export default function Home() {
       <Navbar />
 
       {/* Main content */}
-      <main id="main-content" role="main">
+      <main id="main-content" role="main" className="overflow-x-hidden w-full max-w-full">
         <HeroSection />
 
         {/* Divider */}

@@ -216,30 +216,32 @@ export default function GitHubSection() {
             </h3>
 
             {/* Simulated contribution grid */}
-            <div className="overflow-x-auto">
-              <div className="grid gap-1" style={{ gridTemplateRows: "repeat(7, 1fr)" }}>
-                {Array.from({ length: 7 }).map((_, row) => (
-                  <div key={row} className="flex gap-1">
-                    {Array.from({ length: 52 }).map((_, col) => {
-                      const hash = (row * 37 + col * 17) % 100;
-                      const intensity = hash / 100;
-                      const hasCommit = hash > 45;
-                      const alpha = hasCommit ? Math.min(intensity * 1.4, 1) : 0.07;
-                      return (
-                        <div
-                          key={col}
-                          className="w-3 h-3 rounded-sm transition-opacity hover:opacity-100"
-                          style={{
-                            background: hasCommit
-                              ? `rgba(59,130,246,${alpha})`
-                              : "rgba(255,255,255,0.05)",
-                          }}
-                          title={hasCommit ? `${Math.floor(intensity * 10)} contributions` : "No contributions"}
-                        />
-                      );
-                    })}
-                  </div>
-                ))}
+            <div className="overflow-x-auto max-w-full pb-2 scrollbar-thin">
+              <div className="min-w-[650px] w-full">
+                <div className="grid gap-1" style={{ gridTemplateRows: "repeat(7, 1fr)" }}>
+                  {Array.from({ length: 7 }).map((_, row) => (
+                    <div key={row} className="flex gap-1">
+                      {Array.from({ length: 52 }).map((_, col) => {
+                        const hash = (row * 37 + col * 17) % 100;
+                        const intensity = hash / 100;
+                        const hasCommit = hash > 45;
+                        const alpha = hasCommit ? Math.min(intensity * 1.4, 1) : 0.07;
+                        return (
+                          <div
+                            key={col}
+                            className="w-3 h-3 rounded-sm transition-opacity hover:opacity-100"
+                            style={{
+                              background: hasCommit
+                                ? `rgba(59,130,246,${alpha})`
+                                : "rgba(255,255,255,0.05)",
+                            }}
+                            title={hasCommit ? `${Math.floor(intensity * 10)} contributions` : "No contributions"}
+                          />
+                        );
+                      })}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -259,7 +261,7 @@ export default function GitHubSection() {
 
             {/* CTA */}
             <a
-              href="https://github.com/sayanta-ghosh"
+              href="https://github.com/SS-Sayanta"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
